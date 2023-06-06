@@ -1,18 +1,25 @@
 import { createTheme } from '@mui/material/styles';
-import { red,  } from '@mui/material/colors';
+import { blueGrey, red,  } from '@mui/material/colors';
+import { Kite_One, Kotta_One, Nova_Square } from 'next/font/google';
 
+export const novaSq = Nova_Square({
+  weight: ['400'],
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['Helvetica', 'Arial', 'sans-serif'],
+});
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#1E1E1E'
+      main: '#fff2'
     },
     secondary: {
       main: '#3A64D8'
     },
     info: {
-      main: '#fff'
+      main: '#607d8b'
     }
   },
   components: {
@@ -34,22 +41,23 @@ export const lightTheme = createTheme({
       }
     },
 
-    MuiTypography: {
-      styleOverrides: {
-        h1: {
-          fontSize: 30,
-          fontWeight: 600
-        },
-        h2: {
-          fontSize: 20,
-          fontWeight: 400
-        },
-        subtitle1: {
-          fontSize: 18,
-          fontWeight: 600
-        }
-      }
-    },
+    // MuiTypography: {
+
+    //   styleOverrides: {
+    //     h1: {
+    //       fontSize: 30,
+    //       fontWeight: 600
+    //     },
+    //     h2: {
+    //       fontSize: 20,
+    //       fontWeight: 400
+    //     },
+    //     subtitle1: {
+    //       fontSize: 18,
+    //       fontWeight: 600
+    //     }
+    //   }
+    // },
 
 
     MuiButton: {
@@ -85,5 +93,13 @@ export const lightTheme = createTheme({
       }
     }
     
-  }
+  },
+  typography: {
+    // fontFamily: novaSq.style.fontFamily,
+     // fontFamily: kiteOne.style.fontFamily,
+     // fontFamily: kiteOne.style.fontFamily,
+    //  fontFamily: 'Farsan',
+    //  fontFamily: 'Truculenta',
+    //  fontSize: 20
+}
 });

@@ -1,13 +1,30 @@
 import { Box, Button, Chip, Grid, Typography } from '@mui/material';
+import { GetServerSideProps, NextPage } from 'next';
+
 import { ShopLayout } from '@/components/layouts';
 import { ProductSlideshow, SizeSelector } from '@/components/products';
-import { initialData } from '@/database/products';
 import { ItemCounter } from '@/components/ui/ItemCounter';
 
-const product = initialData.products[0];
+import { dbProducts } from '@/database';
+import { IProduct } from '@/interfaces';
+
+interface Props {
+  product: IProduct
+}
 
 
-const ProductPage = () => {
+//    SEO ok    Video 227
+// Cada vez que se de click para Pedir (Request) la informacion de un producto
+// Esta pagina es generada (Response) del lado del Servidor.
+
+// Cada vez que venga un Request a esta pagina.  
+// El servidor procesa, renderiza y genera la respuesta. 
+const ProductPage:NextPage<Props> = ({ product }) => {
+
+        // Dificultades mas cambio por hacer  v.226  y el SEO es malo  pagina Cargando
+  // const router = useRouter();
+  // const { products: product, isLoading } = useProducts(`/products/${ router.query.slug }`);
+
   return (
     <ShopLayout title={ product.title } pageDescription={ product.description }>
     
@@ -60,5 +77,34 @@ const ProductPage = () => {
     </ShopLayout>
   )
 }
+
+
+// getServerSideProps
+// You should use getServerSideProps when:
+// - Only if you need to pre-render a page whose data must be fetched at request time
+// * No usar esto.... SSR
+//                                                              ctx
+// Cada vez que venga un Request a esta pagina.  El servidor procesa, renderiza y genera la respuesta. 
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  
+  const { slug = '' } = params as { slug: string };
+  const product = await dbProducts.getProductBySlug( slug );
+
+  if ( !product ) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      product
+    }
+  }
+}
+
 
 export default ProductPage

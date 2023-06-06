@@ -1,4 +1,8 @@
 
+html {
+  color:rgba(0, 0, 0, 0.2);
+}
+
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
@@ -29,6 +33,7 @@
 
 
 .circular-btn {
+  background: #1a50e3;
   border-radius: 1.5em;
   font-size: 1.2em;
   font-weight: 400;
