@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Next.js Teslo Shop
+=======
+# Next.js Teslo
+>>>>>>> 681ee105e51fabd7be1aabec05479564acb027aa
 Para correr localmente, se necesita la base de datos.
 ```
 docker-compose up -d
