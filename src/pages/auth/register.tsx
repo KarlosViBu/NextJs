@@ -41,7 +41,7 @@ const RegisterPage = () => {
    }
 
    return (
-      <AuthLayout title={'Ingresar'}>
+      <AuthLayout title={'Registrar'}>
          <form onSubmit={handleSubmit(onRegisterUser)} noValidate>
             <Box sx={{ width: 350, padding: '10px 20px' }}>
                <Grid container spacing={2}>
